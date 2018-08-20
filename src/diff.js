@@ -1,11 +1,13 @@
 function diff(oldTree,newTree) {
     let patches = {};
     let index = 0;
+   // debugger;
     walk(oldTree,newTree,index,patches);
     return patches;
 };
 function diffAttr(oldAttrs,newAttrs) {
     let patch = {};
+    debugger;
     //判断老的属性和新的属性的关系
     for (const key in oldAttrs) {
         if(oldAttrs[key]!==newAttrs[key]){
@@ -20,11 +22,21 @@ function diffAttr(oldAttrs,newAttrs) {
     }
     return patch;
 }
+const ATTRS = 'ATTRS';
 function walk(oldNode,newNode,index,patches) {
-    let  currentPatch = [];
+    let  currentPatch = [];//每个元素都有一个补丁对象
     if(oldNode.type === newNode.type){
         let attrs =  diffAttr(oldNode.props,newNode.props);
-        console.log('atts',attrs);
+        // console.log('atts',attrs);
+        if(Object.keys(attrs).length>0){
+            currentPatch.push({type:ATTRS,attrs})
+        }
+    }  
+    if(currentPatch.length>0){//当前元素确实有补丁
+        //将元素和补丁对应起来，放到大补丁包中
+        patches[index] = currentPatch;
+        console.log('我成功了',patches);
+        
     }
    
 }

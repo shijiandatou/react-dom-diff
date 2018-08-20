@@ -6,7 +6,7 @@ let vertualDom1 = createElement('ul',{class:'top'},[
     createElement('li',{class:'item'},['b']),
     createElement('li',{class:'item'},['c'])
 ]);
-let vertualDom2 = createElement('ul',{class:'top'},[
+let vertualDom2 = createElement('ul',{class:'top2'},[
     createElement('li',{class:'item'},['1']),
     createElement('li',{class:'item'},['b']),
     createElement('li',{class:'item'},['3'])
